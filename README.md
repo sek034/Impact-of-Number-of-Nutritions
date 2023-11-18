@@ -64,7 +64,7 @@ This pattern suggests that the missingness of data in `review` column is potenti
 
 This section centers on examining the pattern of absent values in the `rating` column within our integrated dataset. The goal is to investigate if this missingness depends on specific recipe attributes - specifically, the calories contained in the dish and the amount of time spent in preparation. This inquiry is crucial as it could point to underlying patterns in the relationship between these recipe attributes and the completeness of rating data. 
 
-1. Rating and Calories
+#### 1. Rating and Calories
 
 **Null hypothesis**: The missingness of `rating` column does not depend on calories.
 **Alnernative hypothesis**: The missingness of `rating` column does depend on calories.
