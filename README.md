@@ -44,5 +44,7 @@ The second dataset contains information of reviews and ratings submitted for the
 
 In our project, we mainly used `n_ingredients` column and `calories` column that we added to our dataset by extracting calories information from `nutrition` column. We also inspected `rating`, `review`, and `minutes` columns to examine missingness of certain values. 
 
+---
+
 
 
