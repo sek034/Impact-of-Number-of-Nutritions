@@ -32,6 +32,7 @@ The first dataset contains information of a variety of recipes that have been po
 | `ingredients`   | List of ingredients requried for the recipe |
 | `n_ingredients` | Number of ingredients required for the recipe |
 
+
 The second dataset contains information of reviews and ratings submitted for the recipes through food.com, which conveys 731927 reviews with `user_id` as its index column and 4 other columns conveying the following information:
 
 | Column          | Description   |
@@ -51,7 +52,7 @@ In our project, we mainly used `n_ingredients` column and `calories` column that
 
 ## Assessment of Missingness
 This section of the study will examine missingness in certain columns on the combined dataset. 
-`
+
 ### NMAR Analysis
 
 In the study of missing data mechanisms, Not Missing At Random (NMAR) refers to a situation in which a data point's likelihood of being missing is directly related to its value itself, whether observed or not. This mechanism is particularly pertinent to the `review` column in our dataset, where it is possible to infer that a user's experience with the recipe is the explanation behind the absence of a review.
