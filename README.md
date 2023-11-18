@@ -64,6 +64,8 @@ This pattern suggests that the missingness of data in `review` column is potenti
 
 This section centers on examining the pattern of absent values in the `rating` column within our integrated dataset. The goal is to investigate if this missingness depends on specific recipe attributes - specifically, the calories contained in the dish and the amount of time spent in preparation. This inquiry is crucial as it could point to underlying patterns in the relationship between these recipe attributes and the completeness of rating data. 
 
+- To investigate this, we created a new column `rating_missingness` in which the value is `True` if rating is missing, `False` if rating is not missing. 
+
 #### 1. Rating and Calories
 
 **Null hypothesis**: The missingness of `rating` column does not depend on calories.
@@ -72,13 +74,11 @@ This section centers on examining the pattern of absent values in the `rating` c
 
 **Test Statistics**: The absolute mean difference between two distributions of rating and calories.
 
-To investigate this, we created a new column `rating_missingness` in which the value is `True` if rating is missing, `False` if rating is not missing. 
-
 First, we constructed a plot that indicates distributions of calories with and without the presence of rating below.
 
 ---
 
-Then, we performed a permutaion test by first calculating the observed test statistic - which is tehe absolute mean difference in `calories` between the group of recipes with ratings and the group without ratings. We got 69.007 as the observed test statistic. 
+Then, we performed a permutaion test by first calculating the observed test statistic - which is the absolute mean difference in `calories` between the group of recipes with ratings and the group without ratings. We got 69.007 as the observed test statistic. 
 
 We generated 1000 simulation results for each absolute difference by performing permutation testing to shuffle the missingness of rating 1000 times. 
 
@@ -86,4 +86,28 @@ The empirical distribution of the absolute difference in calorie means over 1000
 
 ---
 
-We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesi**s** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
+We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
+
+
+
+#### 2. Rating and Minutes
+
+**Null hypothesis**: The missingness of `rating` column does not depend on minutes.
+
+**Alnernative hypothesis**: The missingness of `rating` column does depend on minutes.
+
+**Test Statistics**: The absolute mean difference between two distributions of rating and minutes.
+
+Similarly, we constructed a plot that indicates distributions of minutes with and without the presence of rating below.
+
+---
+
+We performed a permutaion test by first calculating the observed test statistic - which is the absolute mean difference in `minutes` between the group of recipes with ratings and the group without ratings. We got 51.451 as the observed test statistic. 
+
+We generated 1000 simulation results for each absolute difference by performing permutation testing to shuffle the missingness of rating 1000 times. 
+
+The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
+
+---
+
+We calculated the p-value to be approximately 0.109, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
