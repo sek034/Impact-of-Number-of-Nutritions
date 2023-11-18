@@ -60,11 +60,13 @@ Users are not as likely to submit reviews unless they have specific critiques or
 
 This pattern suggests that the missingness of data in `review` column is potentially NMAR as the absence of a review may correlate with unobserved, experiential factors inherent to the recipe. Understanding this missingness mechanism is crucial to our research as it highlights the necessity for specialized statistical methods that can take into account any bias that may have been introduced by the NMAR data.
 
+
 ### Missingness Dependency
 
 This section centers on examining the pattern of absent values in the `rating` column within our integrated dataset. The goal is to investigate if this missingness depends on specific recipe attributes - specifically, the calories contained in the dish and the amount of time spent in preparation. This inquiry is crucial as it could point to underlying patterns in the relationship between these recipe attributes and the completeness of rating data. 
 
 - To investigate this, we created a new column `rating_missingness` in which the value is `True` if rating is missing, `False` if rating is not missing. 
+
 
 #### 1. Rating and Calories
 
@@ -88,8 +90,9 @@ The empirical distribution of the absolute difference in calorie means over 1000
 
 We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
 
-___
-***
+
+---
+
 
 #### 2. Rating and Minutes
 
