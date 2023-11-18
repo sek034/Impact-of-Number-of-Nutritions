@@ -49,10 +49,10 @@ In our project, we mainly used `n_ingredients` column and `calories` column that
 
 ---
 
-# Assessment of Missingness
+## Assessment of Missingness
 This section of the study will examine missingness in certain columns on the combined dataset. 
 `
-## NMAR Analysis
+### NMAR Analysis
 
 In the study of missing data mechanisms, Not Missing At Random (NMAR) refers to a situation in which a data point's likelihood of being missing is directly related to its value itself, whether observed or not. This mechanism is particularly pertinent to the `review` column in our dataset, where it is possible to infer that a user's experience with the recipe is the explanation behind the absence of a review.
 
@@ -60,4 +60,4 @@ Users are not as likely to submit reviews unless they have specific critiques or
 
 This pattern suggests that the missingness of data in `review` column is potentially NMAR as the absence of a review may correlate with unobserved, experiential factors inherent to the recipe. Understanding this missingness mechanism is crucial to our research as it highlights the necessity for specialized statistical methods that can take into account any bias that may have been introduced by the NMAR data.
 
-## Missingness Dependency
+### Missingness Dependency
