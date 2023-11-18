@@ -67,6 +67,23 @@ This section centers on examining the pattern of absent values in the `rating` c
 #### 1. Rating and Calories
 
 **Null hypothesis**: The missingness of `rating` column does not depend on calories.
+
 **Alnernative hypothesis**: The missingness of `rating` column does depend on calories.
 
 **Test Statistics**: The absolute mean difference between two distributions of rating and calories.
+
+To investigate this, we created a new column `rating_missingness` in which the value is `True` if rating is missing, `False` if rating is not missing. 
+
+First, we constructed a plot that indicates distributions of calories with and without the presence of rating below.
+
+---
+
+Then, we performed a permutaion test by first calculating the observed test statistic - which is tehe absolute mean difference in `calories` between the group of recipes with ratings and the group without ratings. We got 69.007 as the observed test statistic. 
+
+We generated 1000 simulation results for each absolute difference by performing permutation testing to shuffle the missingness of rating 1000 times. 
+
+The empirical distribution of the absolute difference in calorie means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
+
+---
+
+We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesi**s** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
