@@ -88,7 +88,8 @@ The empirical distribution of the absolute difference in calorie means over 1000
 
 We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
 
-
+___
+***
 
 #### 2. Rating and Minutes
 
