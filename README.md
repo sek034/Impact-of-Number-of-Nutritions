@@ -237,7 +237,7 @@ The empirical distribution of the absolute difference in calorie means over 1000
 
 <iframe src='graph/fig_c.html' width=600 height=600 frameBorder=0></iframe>
 
-We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
+We calculated the p-value to be approximately **0.0**, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
 
 
 ---
@@ -261,9 +261,9 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
-<iframe src='graph/fig_m.html' width=500 height=300 frameBorder=0></iframe>
+<iframe src='graph/fig_m.html' width=700 height=300 frameBorder=0></iframe>
 
-We calculated the p-value to be approximately 0.109, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
+We calculated the p-value to be approximately **0.109**, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
 
 ---
 ### Hypothesis Testing
