@@ -195,7 +195,7 @@ I made the pivot table with proportion of recipes per each rating from 1 to 10. 
 
 This graphs also explains the description.
 
-<iframe src='graph/bargraph.html' width=600 height=600 frameBorder=0></iframe>
+<iframe src='graph/barr.html' width=600 height=600 frameBorder=0></iframe>
 
 ---
 ## Assessment of Missingness
@@ -227,7 +227,8 @@ This section centers on examining the pattern of absent values in the `rating` c
 
 First, we constructed a plot that indicates distributions of calories with and without the presence of rating below.
 
----
+<iframe src='graph/fig_cal.html' width=600 height=600 frameBorder=0></iframe>
+
 
 Then, we performed a permutaion test by first calculating the observed test statistic - which is the absolute mean difference in `calories` between the group of recipes with ratings and the group without ratings. We got 69.007 as the observed test statistic. 
 
@@ -235,7 +236,8 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in calorie means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
----
+<iframe src='graph/fig_c.html' width=600 height=600 frameBorder=0></iframe>
+
 
 We calculated the p-value to be approximately 0.0, which is less than the significance value we chose, 0.05. Therefore, we **reject the null hypothesis** that the missingness of `rating` column does not depend on calories. Since we can conclude that the missingness of `rating` **does** depend on calories, we can say that the missingness of `rating` is **MAR** as it depends another column which is `calories`.
 
@@ -253,7 +255,8 @@ We calculated the p-value to be approximately 0.0, which is less than the signif
 
 Similarly, we constructed a plot that indicates distributions of minutes with and without the presence of rating below.
 
----
+<iframe src='graph/fig_minutes.html' width=600 height=600 frameBorder=0></iframe>
+
 
 We performed a permutaion test by first calculating the observed test statistic - which is the absolute mean difference in `minutes` between the group of recipes with ratings and the group without ratings. We got 51.451 as the observed test statistic. 
 
@@ -261,7 +264,8 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
----
+<iframe src='graph/fig_m.html' width=600 height=600 frameBorder=0></iframe>
+
 
 We calculated the p-value to be approximately 0.109, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
 
