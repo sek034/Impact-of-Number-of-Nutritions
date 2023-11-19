@@ -45,10 +45,156 @@ The second dataset contains information of reviews and ratings submitted for the
 In our project, we mainly used `n_ingredients` column and `calories` column that we added to our dataset by extracting calories information from `nutrition` column. We also inspected `rating`, `review`, and `minutes` columns to examine missingness of certain values. 
 
 ---
+## Data Cleaning and EDA
+
+The data that are using two different datasets: recipe, interaction
+
+> Checking Data Types
+
+Let's look into their columns and datatypes.
+
+This is recipe data.
+| Column name     | Type          |
+|-----------------|---------------|
+| `name`          | object        |
+| `id`            | int64         |
+| `minutes`       | int64         |
+| `contributor_id`| int64         |
+| `submitted`     | object        |
+| `tags`          | object        |
+| `nutrition`     | object        |
+| `n_steps`       | int64         |
+| `steps`         | object        |
+| `description`   | object        |
+| `ingredients`   | object        |
+| `n_ingredients` | int64         |
+
+and this is interaction(rating) data
+
+| Column name     | Type          |
+|-----------------|---------------|
+| `user_id`       | int64         |
+| `recipe_id`     | int64         |
+| `date`          | object        |
+| `rating`        | int64         |
+| `review`        | object        |
+
+> Merging Two Datasets
+
+For convenience purpose, The first step of cleaning is going to be merging the two data sets.
+Two datasets can be merged based on 'ID' from recipe and 'recipe_id' from interaction as they both share same recipe id. The merge will be conducted based on recipe data.
+
+> Replace Missing Value to np.NaN
+
+There are some missing value in merged data (ex. rating) indicated as 0. The missing value has to be converted to np.NaN instead of 0 for future hypothesis and permutation testing as the testing would recognize the missing value if it is in np.NaN.
+
+> Adding Column for Calories Only
+
+As calories for each recipe is included in nutrition column, we isolated the calories and make separate column for it.
+
+> Rating to Average Rating
+
+Another important information that we would need is rating mean per recipe. We made another columns for rating mean per recipe. As Average Rating still contains np.NaN, we will be able to do hypothesis and permutation testing based on the missingness for later.
+
+> Categorize Number of Ingredients
+
+As the number of ingredients are dispersed and it would be easier to conduct permutation testing if it's categorized, we made another column for "low_number". If the n_ingredients is less than its median, it will say True and False for otherwise.
+
+> Log Transformation for Calories
+
+Calories data are very skewed to right. In this case, it would be hard for us to get the accurate estimation for hypothesis and permutation testing. Therefore, we made another column for log(calories - minimum of calories) for each recipe.
+
+> Clean Result
+
+| Column name       | Type          |
+|-----------------  |---------------|
+| `name`            | object        |
+| `id`              | int64         |
+| `minutes`         | float64       |
+| `contributor_id`  | int64         |
+| `submitted`       | object        |
+| `tags`            | object        |
+| `nutrition`       | object        |
+| `n_steps`         | int64         |
+| `steps`           | object        |
+| `description`     | object        |
+| `ingredients`     | object        |
+| `n_ingredients`   | int64         |
+| `user_id`         | float64       |
+| `recipe_id`       | float64       |
+| `date`            | object        |
+| `rating`          | float64       |
+| `review`          | object        |
+| `rating_mean`     | float64       |
+| `calories`        | float64       |
+| `low_number`      | bool          |
+| `log_calories`    | float64       |
+| `rate_missingness`| bool          |
+
+
+> Example
+
+This is the example of 
+I took out only columns that are important 
+
+|     id | name                                 | n_ingredients | calories        | log_calories  | rating_missingness|
+|-------:|:-------------------------------------|--------------:|:----------------|--------------:|:------------------|
+| 333281 | 1 brownies in the world best ever    |        9      |            138.4|       4.937347| False             |
+| 453467 | 1 in canada chocolate chip cookies   |        11     |            595.1|       6.390408| False             |
+| 306168 | 412 broccoli casserole               |        9      |            194.8|       5.277094| False             |
+| 306168 | 412 broccoli casserole               |        9      |            194.8|       5.277094| False             |
+| 306168 | 412 broccoli casserole               |        9      |            194.8|       5.277094| False             |
+| 306168 | 412 broccoli casserole               |        9      |            194.8|       5.277094| False             |
 
 
 ---
 
+### Exploratory Data Analysis
+
+### Univariate Analysis
+
+In the univariate analysis, we would analyze the distribution of number of ingredients and the distribution of calories
+
+<iframe src='graph/distribution_n_ingredients.html' width=600 height=600 frameBorder=0></iframe>
+
+This is the distribution of number of ingredients. We can tell that the distribution is right skewed.
+
+
+<iframe src='graph/distribution_calories.html' width=600 height=600 frameBorder=0></iframe>
+
+This is the distribution of calories. As there were outliers that make the graph to hard to interpret, I limited the calories to 20k so that people can see the distribution of majority. We can tell that the distribution of calories is also right skewed data.
+
+
+### Bivariate Analysis
+
+In Bivariate Analysis, we would analyze the correlation between calories and number of ingredients.
+
+<iframe src='graph/scatter.html' width=600 height=600 frameBorder=0></iframe>
+
+This is the scatter plots that explains the distribution between caloreis and number of ingredients. As dots are congreated near 10 ingredients and 10k calories. We can tell the distribution is right skewed but not as much as the scatter plots from univariate. Also, we can also see there are some outliers with extremely high calories.
+
+<iframe src='graph/box_plot.html' width=600 height=600 frameBorder=0></iframe>
+
+This is the box plots that explains the dispersion of calories between low number of ingredients and high number of ingredients (low number = lower than the median of number of ingredients and vice versa). As the box plot of high number of ingredients lower in calories than the lower number of ingredients, we can tell that calories tend to me lower in large number of ingredients. Furthermore, we can also tell that dispersion of two categories are not that different.
+
+
+### Interesting Aggregates
+
+|   rating |     False |      True |
+|---------:|----------:|----------:|
+|        1 | 0.0125714 | 0.0136221 |
+|        2 | 0.0112957 | 0.0102612 |
+|        3 | 0.0337719 | 0.031544  |
+|        4 | 0.173422  | 0.16647   |
+|        5 | 0.768939  | 0.778103  |
+
+I made the pivot table with proportion of recipes per each rating from 1 to 10. We can tell that low number of ingredients and higher number of ingredients have similar proportion for every rating. We can also tell that the total number of 5 rating is the highest number in total.
+
+This graphs also explains the description.
+
+<iframe src='graph/bargraph.html' width=600 height=600 frameBorder=0></iframe>
+
+---
 ## Assessment of Missingness
 This section of the study will examine missingness in certain columns on the combined dataset. 
 `
@@ -115,3 +261,45 @@ The empirical distribution of the absolute difference in minutes means over 1000
 ---
 
 We calculated the p-value to be approximately 0.109, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
+
+---
+### Hypothesis Testing
+
+The question for Hypothesis testing is: are calories(numbers) and number of ingredients (categories --> lower or higher) correlated? (is there any relationship between them)
+
+We are going to use permutation testing in order to find the relationship between them. For significance value, we are going to use 0.05
+
+For test statistic, we are going to use absolute mean difference
+
+> Setting Up the Testing
+
+As we already mentioned, we already made the columns for categorizing the number of ingredients by categorizing the number of ingredients that is lower than median as True and False for otherwise. 
+
+Therefore, dataframe only with "id", "low_number", and calories looks like this:
+
+         |      id|    low_number|   calories |
+    |---:|-------:|:-------------|-----------:|
+    |  0 | 333281 | False        |      138.4 |
+    |  1 | 453467 | False        |      595.1 |
+    |  2 | 306168 | False        |      194.8 |
+    |  3 | 306168 | False        |      194.8 |
+    |  4 | 306168 | False        |      194.8 |
+
+
+The reason why we chose absolute mean difference is because we have one categorical data with numerical data to compare.
+For comparison, we chose two-sided data as it is a binary testing. H0 = no relationshiop, H1 = There is a relationship.
+
+Also we use log transformation for calories as calories is a highly skewed data with large outliers. It could cause a confusion and mis calculation for permutation testing.
+That is why we used log transformation in order to decrease the effect of skewness.
+
+> Permutation
+We ran permutation test for 10000 times to get the accurate data. 
+The bar graph shows the result of the permutation testing.
+
+<iframe src='graph/fig_permu.html' width=600 height=600 frameBorder=0></iframe>
+
+> Conclusion
+
+The p-value for the testing is 0.00099, which is way smaller than significant level of 0.05. Therfore, we reject the null hypothesis.
+
+This result might be caused by due to the reason with existence of heteroscedasticity, which means that the dispersion of error is not constant. Also, there might be other factor such as kinds of ingredients that they use. For example, french fries only take about 3 different ingredients, but it is considered as a very high calories food.
