@@ -163,7 +163,7 @@ In the univariate analysis, we would analyze the distribution of number of ingre
 This is the distribution of number of ingredients. We can tell that the distribution is right skewed.
 
 
-<iframe src='graph/distribution_calories.html' width=300 height=500 frameBorder=0></iframe>
+<iframe src='graph/distribution_calories.html' width=600 height=500 frameBorder=0></iframe>
 
 This is the distribution of calories. As there were outliers that make the graph to hard to interpret, I limited the calories to 20k so that people can see the distribution of majority. We can tell that the distribution of calories is also right skewed data.
 
@@ -261,7 +261,7 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
-<iframe src='graph/fig_m.html' width=700 height=350 frameBorder=0></iframe>
+<iframe src='graph/fig_m.html' width=700 height=400 frameBorder=0></iframe>
 
 We calculated the p-value to be approximately **0.109**, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
 
