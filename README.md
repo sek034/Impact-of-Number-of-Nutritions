@@ -54,6 +54,8 @@ The data that are using two different datasets: recipe, interaction
 Let's look into their columns and datatypes.
 
 This is recipe data.
+
+
 | Column name     | Type          |
 |-----------------|---------------|
 | `name`          | object        |
