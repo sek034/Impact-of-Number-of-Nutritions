@@ -195,7 +195,7 @@ I made the pivot table with proportion of recipes per each rating from 1 to 10. 
 
 This graphs also explains the description.
 
-<iframe src='graph/barr.html' width=300 height=500 frameBorder=0></iframe>
+<iframe src='graph/barr.html' width=500 height=500 frameBorder=0></iframe>
 
 ---
 ## Assessment of Missingness
@@ -261,7 +261,7 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
-<iframe src='graph/fig_m.html' width=300 height=500 frameBorder=0></iframe>
+<iframe src='graph/fig_m.html' width=500 height=300 frameBorder=0></iframe>
 
 We calculated the p-value to be approximately 0.109, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
 
