@@ -176,7 +176,7 @@ In Bivariate Analysis, we would analyze the correlation between calories and num
 
 This is the scatter plots that explains the distribution between caloreis and number of ingredients. As dots are congreated near 10 ingredients and 10k calories. We can tell the distribution is right skewed but not as much as the scatter plots from univariate. Also, we can also see there are some outliers with extremely high calories.
 
-<iframe src='graph/box_plot.html' width=600 height=600 frameBorder=0></iframe>
+<iframe src='graph/box_plot.html' width=800 height=700 frameBorder=0></iframe>
 
 This is the box plots that explains the dispersion of calories between low number of ingredients and high number of ingredients (low number = lower than the median of number of ingredients and vice versa). As the box plot of high number of ingredients lower in calories than the lower number of ingredients, we can tell that calories tend to me lower in large number of ingredients. Furthermore, we can also tell that dispersion of two categories are not that different.
 
@@ -195,7 +195,7 @@ I made the pivot table with proportion of recipes per each rating from 1 to 10. 
 
 This graphs also explains the description.
 
-<iframe src='graph/barr.html' width=400 height=300 frameBorder=0></iframe>
+<iframe src='graph/barr.html' width=600 height=500 frameBorder=0></iframe>
 
 ---
 ## Assessment of Missingness
@@ -261,7 +261,7 @@ We generated 1000 simulation results for each absolute difference by performingÂ
 
 The empirical distribution of the absolute difference in minutes means over 1000 permutations is plotted below; our observed test statistic is indicated by the red line. 
 
-<iframe src='graph/fig_m.html' width=700 height=400 frameBorder=0></iframe>
+<iframe src='graph/fig_m.html' width=700 height=500 frameBorder=0></iframe>
 
 We calculated the p-value to be approximately **0.109**, which is greater than the significance value we chose, 0.05. Therefore, we **fail to reject the null hypothesis** that the missingness of `rating` column does not depend on minutes. Since we can conclude that the missingness of `rating` **does not** depend on minutes, we can say that the missingness of `rating` is **MCAR** as it doesn't depend on another column or the values themselves.
 
