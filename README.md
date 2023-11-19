@@ -163,7 +163,7 @@ In the univariate analysis, we would analyze the distribution of number of ingre
 This is the distribution of number of ingredients. We can tell that the distribution is right skewed.
 
 
-<iframe src='graph/distribution_calories.html' width=600 height=400 frameBorder=0></iframe>
+<iframe src='graph/distribution_calories.html' width=1000 height=700 frameBorder=0></iframe>
 
 This is the distribution of calories. As there were outliers that make the graph to hard to interpret, I limited the calories to 20k so that people can see the distribution of majority. We can tell that the distribution of calories is also right skewed data.
 
@@ -195,7 +195,7 @@ I made the pivot table with proportion of recipes per each rating from 1 to 10. 
 
 This graphs also explains the description.
 
-<iframe src='graph/barr.html' width=600 height=300 frameBorder=0></iframe>
+<iframe src='graph/barr.html' width=900 height=700 frameBorder=0></iframe>
 
 ---
 ## Assessment of Missingness
